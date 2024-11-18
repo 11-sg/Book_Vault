@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookVault - Search</title>
+    <link rel="stylesheet" href="Styles/home.css">
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <img src="vitlogo.jpg" alt="Logo" width="30" height="30" class="vitlogo" />
+            <div class="book">BookVault</div>
+            <div class="menu-bar" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div id="nav-menu" class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/Pages/about.html">About</a></li>
+                    <li><a class="signed-in" href="/Pages/dashboard.html">Dashboard</a></li>
+                    <li><button onclick="window.location.href='/Pages/sign_in.html';">Sign In</button></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="text">
+        <div class="text-bold">BookVault: A Dynamic Library Management System</div>
+        <div class="text-thin">
+            Welcome to the BookVault! Use the search bar below to find textbooks, research papers, or any 
+            academic materials you need. Easily check availability and issue books to support your studies!
+        </div>
+    </div>
+
+    <div class="search">
+        <form id="search-form" onsubmit="handleSearch(event)">
+            <input type="text" placeholder="Search for books, authors, or genres..." id="search-input" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div id="search-results">
+        <table id="books-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Description</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Book entries will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="Scripts/home.js"></script>
+</body>
+
+</html>
