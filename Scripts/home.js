@@ -84,7 +84,8 @@ function signOut() {
     // document.querySelector('#name').innerHTML = ""
     // document.querySelector('#email').innerHTML = ""
     // document.querySelector('#books').innerHTML = ""
-    checkSignInStatus(); // Update UI to show Sign In button
+    // checkSignInStatus(); // Update UI to show Sign In button
+    window.location.href = "/Book_Vault/index.html";
 }
 
 // Nav bar toggle for mobile menu
