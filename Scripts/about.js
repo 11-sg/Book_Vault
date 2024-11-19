@@ -34,9 +34,6 @@ function checkSignInStatus() {
 // Function to handle the sign-out action
 function signOut() {
     localStorage.removeItem('user'); // Remove user data from localStorage
-    checkSignInStatus(); // Update UI to show Sign In button
-}
-document.querySelector(".nav-menu button").addEventListener("click", () => {
-    signOut()
     window.location.href = "/Book_Vault/index.html";
-});
+}
+
