@@ -34,9 +34,9 @@ function checkSignInStatus() {
 // Function to handle the sign-out action
 function signOut() {
     localStorage.removeItem('user'); // Remove user data from localStorage
+    window.location.href = "/Book_Vault/index.html";
     document.querySelector('#name').innerHTML = ""
     document.querySelector('#email').innerHTML = ""
     document.querySelector('#books').innerHTML = ""
-    window.location.href = "/Book_Vault/index.html";
 }
 
