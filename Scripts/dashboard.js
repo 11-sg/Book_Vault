@@ -53,3 +53,8 @@ if (email) {
     console.error('No email found in localStorage');
 }
 
+function signOut() {
+    localStorage.removeItem('user'); // Remove user data from localStorage
+    checkSignInStatus(); // Update UI to show Sign In button
+}
+
