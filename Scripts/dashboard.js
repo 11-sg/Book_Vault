@@ -58,7 +58,7 @@ function signOut() {
 }
 document.querySelector(".nav-menu button").addEventListener("click", () => {
     signOut()
-    window.location.href = "Book_Vault/index.html";
+    window.location.href = "/Book_Vault/index.html";
 });
     
 
