@@ -24,7 +24,7 @@ function checkSignInStatus() {
         // User is not signed in, show Sign In button
         signInButton.textContent = 'Sign In';
         signInButton.onclick = () => {
-            window.location.href = '/Book_Vault/Pages/sign_in.html'; // Redirect to sign-in page
+            window.location.href = 'sign_in.html'; // Redirect to sign-in page
         };
 
         signOutButton.style.display = 'none'; // Hide sign-out button
