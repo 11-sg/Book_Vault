@@ -32,7 +32,7 @@ signInForm.addEventListener('submit', async (event) => {
             // Store user sign-in status in localStorage
             localStorage.setItem('user', JSON.stringify({ email, name: data.name })); // Save user info
 
-            href = "/Book_Vault/index.html"; // Redirect to homepage after successful login
+            window.location.href = "/Book_Vault/index.html"; // Redirect to homepage after successful login
         } else {
             alert(data.message); // Show error message
         }
