@@ -55,6 +55,9 @@ if (email) {
 
 function signOut() {
     localStorage.removeItem('user'); // Remove user data from localStorage
+    document.querySelector('#name').innerHTML = ""
+    document.querySelector('#email').innerHTML = ""
+    document.querySelector('#books').innerHTML = ""
 }
 document.querySelector(".nav-menu button").addEventListener("click", () => {
     signOut()
