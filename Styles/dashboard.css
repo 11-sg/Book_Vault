@@ -1,11 +1,10 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    margin: 0%;
+    padding: 0%;
 }
 
-nav {
+.nav {
     background-color: #1b7a6a;
     height: 49px;
     padding: 0px 20px;
@@ -13,7 +12,9 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
+    position: fixed;
+    margin-top: -1px;
+    width: 97%;
 }
 
 .menu-bar {
@@ -73,7 +74,10 @@ nav {
     cursor: pointer;
     background-color: rgba(170, 246, 246, 0.114);
 }
-
+.content{
+    padding-top: 48px;
+    background-color:#1b7a6a0e;
+}
 .book {
     font-size: 24px;
     font-weight: bold;
@@ -88,9 +92,9 @@ nav {
 .vertical-tabs {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 150px;
     background-color: #1b7a6a;
-    padding: 10px;
+    padding: 5px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -118,14 +122,28 @@ nav {
 .tab-content {
     flex-grow: 1;
     padding: 20px;
-    background-color: white;
-    display: none;
+    /* background-color: white; */
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+}
+.user_info {
+    font-size: 2.2vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
 
 .tab-content h2 {
     margin-top: 0;
+    color: black;
+    text-decoration: underline 1.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tab-content.active {
-    display: block;
+    display: grid;
 }

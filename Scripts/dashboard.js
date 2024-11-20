@@ -11,7 +11,7 @@ function openTab(evt, tabName) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
 
-    document.getElementById(tabName).style.display = "block";
+    document.getElementById(tabName).style.display = "grid";
     evt.currentTarget.className += " active";
 }
 function toggleMenu() {
@@ -37,9 +37,10 @@ if (email) {
             if (matchingUser) {
                 console.log('Matching User Data:', matchingUser);
                 // Use the data (e.g., display it on the dashboard)
-                document.querySelector('#name').innerHTML = matchingUser.name
+                document.querySelector('#name').innerHTML = '<i>Welcome, ' + matchingUser .name + ' ! <br><br>';
                 document.querySelector('#email').innerHTML = matchingUser.email
                 document.querySelector('#books').innerHTML = matchingUser.book
+                document.querySelector('#userid').innerHTML = matchingUser.userid
                 
            
             } else {
