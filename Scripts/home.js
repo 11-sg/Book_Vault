@@ -4,8 +4,8 @@ let allBooks = []; // Store all books globally
 async function fetchBooks() {
     try {
         const response = await fetch('http://localhost:3000/api/books');
-        allBooks = await response.json(); // Store the fetched books
-        displayBooks(allBooks); // Display all books initially
+        allBooks = await response.json(); 
+        displayBooks(allBooks); 
     } catch (error) {
         console.error('Error fetching books:', error);
     }
@@ -14,7 +14,7 @@ async function fetchBooks() {
 // Function to display the fetched books in a table
 function displayBooks(books) {
     const tableBody = document.querySelector('#books-table tbody');
-    tableBody.innerHTML = ''; // Clear previous entries
+    tableBody.innerHTML = ''; 
 
     books.forEach(book => {
         const bookElement = document.createElement('tr');
@@ -28,26 +28,26 @@ function displayBooks(books) {
     });
 }
 
-// Handle the search form submission and filter the books
+
 async function handleSearch(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
+    event.preventDefault(); 
     const query = document.getElementById('search-input').value.toLowerCase();
 
-    // Filter books based on the search query
+  
     const filteredBooks = allBooks.filter(book =>
         book.title.toLowerCase().includes(query) ||
         book.author.toLowerCase().includes(query) ||
         book.genre.toLowerCase().includes(query)
     );
 
-    displayBooks(filteredBooks); // Display filtered books
+    displayBooks(filteredBooks); 
 }
 
-// Call fetchBooks on page load to populate the table
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Page loaded. Checking sign-in status...');
-    checkSignInStatus(); // Check if the user is signed in
-    fetchBooks(); // Fetch and display all books
+    checkSignInStatus(); 
+    fetchBooks(); 
 });
 
 // Function to check the sign-in status of the user
@@ -65,26 +65,22 @@ function checkSignInStatus() {
             signOut(); // Handle sign out
         };
 
-        signOutButton.style.display = 'inline-block'; // Show sign-out button
+        signOutButton.style.display = 'inline-block';
     
     } else {
-        // User is not signed in, show Sign In button
+      
         signInButton.textContent = 'Sign In';
         signInButton.onclick = () => {
-            window.location.href = '/Book_Vault/Pages/sign_in.html'; // Redirect to sign-in page
+            window.location.href = '/Book_Vault/Pages/sign_in.html'; 
         };
 
-        signOutButton.style.display = 'none'; // Hide sign-out button
+        signOutButton.style.display = 'none'; 
     }
 }
 
 // Function to handle the sign-out action
 function signOut() {
     localStorage.removeItem('user'); // Remove user data from localStorage
-    // document.querySelector('#name').innerHTML = ""
-    // document.querySelector('#email').innerHTML = ""
-    // document.querySelector('#books').innerHTML = ""
-    // checkSignInStatus(); // Update UI to show Sign In button
     window.location.href = "/Book_Vault/index.html";
 }
 
