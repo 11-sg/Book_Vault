@@ -11,7 +11,7 @@ function toggleForms() {
     signupError.style.display = 'none'; // Reset error message
 }
 
-// Sign In Form Submission
+
 signInForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     
@@ -30,11 +30,11 @@ signInForm.addEventListener('submit', async (event) => {
         const data = await response.json();
         if (data.success) {
             // Store user sign-in status in localStorage
-            localStorage.setItem('user', JSON.stringify({ email, name: data.name })); // Save user info
+            localStorage.setItem('user', JSON.stringify({ email, name: data.name })); 
 
-            window.location.href = "/Book_Vault/index.html"; // Redirect to homepage after successful login
+            window.location.href = "/Book_Vault/index.html"; 
         } else {
-            alert(data.message); // Show error message
+            alert(data.message);
         }
     } catch (error) {
         console.error('Error during sign in:', error);
@@ -63,7 +63,7 @@ signUpForm.addEventListener('submit', async (event) => {
             alert('Registration successful! You can now Sign In.');
             toggleForms(); // Switch to Sign In form
         } else {
-            signupError.style.display = 'block'; // Show error message
+            signupError.style.display = 'block'; 
         }
     } catch (error) {
         console.error('Error during sign up:', error);
