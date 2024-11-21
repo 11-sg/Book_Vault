@@ -17,6 +17,9 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    margin-top: -1px;
+    width: 100%;
 }
 
 .menu-bar {
@@ -85,9 +88,12 @@ body {
     font-weight: bold;
     font-size: 26px;
 }
-
+.content{
+    padding-top: 50px;
+    background-color:#1b7a6a0e;
+}
 .text {
-    margin: 23px;
+    margin-bottom: 23px;
     display: flex;
     flex-direction: column;
     align-items: center;
