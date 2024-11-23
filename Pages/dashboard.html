@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Styles/dashboard.css">
-    <link rel="icon" href="../vitlogo.jpg">
     <title>Dashboard - BookVault</title>
 </head>
 
@@ -21,38 +20,39 @@
             </div>
             <div id="nav-menu" class="nav-menu">
                 <ul>
-                    <li><a href="/Book_Vault/index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><button onclick="window.location.href='/Book_Vault/index.html';">Sign Out</button></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../Pages/about.html">About</a></li>
+                    <li><button onclick="window.location.href='../Pages/sign_in.html';">Sign In</button></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <div class="content">
-        <div class="dashboard-container">
-            <div class="vertical-tabs">
-                <button class="tablink active" onclick="openTab(event, 'profile')">Profile</button>
-                <button class="tablink" onclick="openTab(event, 'your-books')">Your Books</button>
-            </div>
 
-            <div class="tab-content" id="profile">
-                <h2>Your Profile</h2>
-                <!-- <p>Here is the information about your profile.</p> -->
-                <div class="user_info" id="name"></div>
-                <div class="user_info" id="email"></div>
-                <div class="user_info" id="userid"></div>
-
-
-            </div>
-
-            <div class="tab-content" id="your-books" style="display:none;">
-                <h2>Your Books</h2>
-                <!-- <p>Here is a list of the books you've issued.</p> -->
-                <div class="user_info" id="books"></div>
-            </div>
+    <main class="dashboard-container">
+        <div class="vertical-tabs">
+            <button class="tablink active" onclick="openTab(event, 'profile')">Profile</button>
+            <button class="tablink" onclick="openTab(event, 'your-books')">Your Books</button>
         </div>
-    </div>
-    <script src="../Scripts/dashboard.js"></script></script>
+
+        <div class="tab-content" id="profile">
+            <h2>Your Profile</h2>
+            <div class="user_info" id="name">Name: Loading...</div>
+            <div class="user_info" id="email">Email: Loading...</div>
+            <div class="user_info" id="books">Issued Books: Loading...</div>
+            <p>Here is the information about your profile.</p>
+        </div>
+
+        <div class="tab-content" id="your-books" style="display:none;">
+            <h2>Your Books</h2>
+            <p>Here is a list of the books you've issued:</p>
+            <div id="issued-books">Loading...</div>
+            
+            <h3>Recommended Books</h3>
+            <div id="recommended-books">Loading...</div>
+        </div>
+    </main>
+
+    <script src="../Scripts/dashboard.js"></script>
 </body>
 
 </html>
