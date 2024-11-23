@@ -36,22 +36,22 @@ async function fetchAvailability() {
 }
 
 // Function to display the fetched books in a table
-function displayBooks(books) {
-    const tableBody = document.querySelector('#books-table tbody');
-    tableBody.innerHTML = ''; 
+// function displayBooks(books) {
+//     const tableBody = document.querySelector('#books-table tbody');
+//     tableBody.innerHTML = ''; 
 
-    books.forEach(book => {
-        const bookElement = document.createElement('tr');
-        bookElement.innerHTML = `
-            <td>${book.title}</td>
-            <td>${book.author}</td>
-            <td>${book.genre}</td>
-            <td>${book.description}</td>
-            <td>${book.availability}</td> <!-- Display availability -->
-        `;
-        tableBody.appendChild(bookElement);
-    });
-}
+//     books.forEach(book => {
+//         const bookElement = document.createElement('tr');
+//         bookElement.innerHTML = `
+//             <td>${book.title}</td>
+//             <td>${book.author}</td>
+//             <td>${book.genre}</td>
+//             <td>${book.description}</td>
+//             <td>${book.availability}</td> <!-- Display availability -->
+//         `;
+//         tableBody.appendChild(bookElement);
+//     });
+// }
 // function displaysearch(books) {
 //     const tableBody = document.querySelector('#books-table tbody');
 //     tableBody.innerHTML = ''; // Clear previous entries
@@ -69,33 +69,60 @@ function displayBooks(books) {
 
 function displaysearch(books) {
     const resultsContainer = document.getElementById('results-container');
+    if (!resultsContainer) {
+        console.error('Results container not found');
+        return;
+    }
+    
     resultsContainer.innerHTML = ''; // Clear previous results
 
-    books.forEach(book => {
-        const bookCard = `
-            <div class="book-card" style="border: 1px solid #ccc; padding: 15px; margin: 10px; width: 300px; display: inline-block; text-align: left;">
-                <img src="${book.image || 'placeholder.jpg'}" alt="${book.title}" style="width: 100%; height: auto; object-fit: cover; margin-bottom: 10px;">
-                <h3>${book.title}</h3>
-                <p><strong>Author:</strong> ${book.author}</p>
-                <p><strong>Genre:</strong> ${book.genre}</p>
-                <p><strong>Description:</strong> ${book.description}</p>
-                <p><strong>Availability:</strong> ${availableBooks.includes(book.title) ? 'NO' : 'Yes'}</p>
-            </div>
-        `;
-        resultsContainer.innerHTML += bookCard; // Append each book card
-    });
-
-    // Show a message if no books match the query
     if (books.length === 0) {
-        resultsContainer.innerHTML = `<p style="color: red; text-align: center;">No books found matching your query.</p>`;
+        resultsContainer.innerHTML = `
+            <div class="no-results" style="text-align: center; padding: 20px;">
+                <p style="color: #666; font-size: 1.1em;">No books found matching your search criteria.</p>
+            </div>`;
+        return;
     }
+
+    books.forEach(book => {
+        const bookCard = document.createElement('div');
+        bookCard.className = 'book-card';
+        bookCard.style.cssText = 'border: 1px solid #ccc; padding: 15px; margin: 10px; width: 300px; display: inline-block; text-align: left; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+        
+        bookCard.innerHTML = `
+            <img src="${book.image || 'placeholder.jpg'}" alt="${book.title}" 
+                style="width: 100%; height: auto; object-fit: cover; margin-bottom: 10px; border-radius: 4px;">
+            <h3 style="margin: 10px 0; color: #333;">${book.title}</h3>
+            <p><strong>Author:</strong> ${book.author}</p>
+            <p><strong>Genre:</strong> ${book.genre}</p>
+            <p><strong>Description:</strong> ${book.description}</p>
+            <p style="color: ${book.availability === 'Yes' ? 'green' : 'red'};">
+                <strong>Availability:</strong> ${book.availability}
+            </p>
+        `;
+        
+        resultsContainer.appendChild(bookCard);
+    });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Page loaded. Checking sign-in status...');
+    checkSignInStatus();
+    fetchBooks();
+
+     // Attach event listener for the search button
+     const searchButton = document.getElementById('search-form');
+     if (searchButton) {
+         searchButton.addEventListener('submit', handleSearch); // Bind the click event
+     }
+});
+
 
 // Handle the search form submission and filter the books
 function handleSearch(event) {
     event.preventDefault(); // Prevent the form from submitting normally
-    const query = document.getElementById('search-input').value.toLowerCase();
-    
+    const query = document.getElementById('search-input').value.trim().toLowerCase();
+    console.log('Search query:', query); 
     // const foundBook = allBooks.find(book => book.title.toLowerCase().includes(query));
 
     // const imageURL = foundBook.image; // Replace with your image URL
@@ -108,23 +135,23 @@ function handleSearch(event) {
     // document.querySelector('#genre').innerHTML = foundBook.genre
     // document.querySelector('#availability').innerHTML = "Available : " + (availableBooks.includes(foundBook.title) ? 'No' : 'Yes');
 
-    const filteredBooks = allBooks.filter(book =>
+    const filteredBooks = allBooks.filter(book => {
 
-        title = book.title.toLowerCase().includes(query) ||
+        console.log('Book:', book);
+        return(
+        book.title.toLowerCase().includes(query) ||
         book.author.toLowerCase().includes(query) ||
         book.genre.toLowerCase().includes(query) ||
         book.description.toLowerCase().includes(query)
-    );
+        );
+    });
 
+    console.log('Filtered Books:', filteredBooks);
+    document.querySelector('#results-container').innerHTML = '';
     displaysearch(filteredBooks); // Display filtered books
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Page loaded. Checking sign-in status...');
-    checkSignInStatus(); 
-    fetchBooks(); 
-});
 
 // Function to check the sign-in status of the user
 function checkSignInStatus() {
@@ -143,13 +170,13 @@ function checkSignInStatus() {
 
         signOutButton.style.display = 'inline-block'; // Show sign-out button
     } else {
-      
+
         signInButton.textContent = 'Sign In';
         signInButton.onclick = () => {
             window.location.href = '/Pages/sign_in.html'; // Redirect to sign-in page
         };
 
-        signOutButton.style.display = 'none'; 
+        signOutButton.style.display = 'none';
     }
 }
 
