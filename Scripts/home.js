@@ -17,7 +17,7 @@ async function fetchBooks() {
 // Function to fetch available books data from available.json file
 async function fetchAvailability() {
     try {
-        const response = await fetch('../Book_Vault/node/not_available.json'); // Path to available.json file
+        const response = await fetch('/node/not_available.json'); // Path to available.json file
         const data = await response.json(); // Get the available books
         availableBooks = data.books.map(book => book.title); // Extract available book titles
 
@@ -115,7 +115,7 @@ function checkSignInStatus() {
     } else {
         signInButton.textContent = 'Sign In';
         signInButton.onclick = () => {
-            window.location.href = '/Book_Vault/Pages/sign_in.html'; // Redirect to sign-in page
+            window.location.href = '/Pages/sign_in.html'; // Redirect to sign-in page
         };
 
         signOutButton.style.display = 'none';
@@ -125,7 +125,7 @@ function checkSignInStatus() {
 // Function to handle the sign-out action
 function signOut() {
     localStorage.removeItem('user'); // Remove user data from localStorage
-    window.location.href = "/Book_Vault/index.html"; // Redirect to home page
+    window.location.href = "/index.html"; // Redirect to home page
 }
 
 // Nav bar toggle for mobile menu

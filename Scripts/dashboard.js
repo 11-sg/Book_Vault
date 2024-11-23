@@ -42,15 +42,16 @@ if (userData && userData.email) {
             if (matchingUser) {
                 console.log('Matching User Data:', matchingUser);
                 // Display user details
-                document.querySelector('#name').innerHTML = `Name: ${matchingUser.name}`;
-                document.querySelector('#email').innerHTML = `Email: ${matchingUser.email}`;
-                document.querySelector('#books').innerHTML = `Issued Books: ${matchingUser.book.split(', ').join(', ')}`; // Assuming book is a comma-separated string
+                document.querySelector('#name').innerHTML = matchingUser.name;
+                document.querySelector('#email').innerHTML = matchingUser.email;
+                document.querySelector('#userid').innerHTML = matchingUser.userid;
 
                 // Update issued books in the "Your Books" tab
-                document.querySelector('#issued-books').innerHTML = matchingUser.book.split(', ').join(', '); // Display issued books
+                document.querySelector('#curr-books').innerHTML = matchingUser.issued_books // Display issued books
+                document.querySelector('#history').innerHTML = matchingUser.book // Display issued books
 
                 // Fetch recommended books based on issued books
-                fetchRecommendedBooks(matchingUser.book.split(', ')); // Split the string into an array
+                fetchRecommendedBooks(matchingUser.book); // Split the string into an array
             } else {
                 console.warn('No user found for this email');
             }
@@ -73,7 +74,9 @@ async function fetchRecommendedBooks(userBooks) {
         console.log('All Books Data:', allBooks); // Debugging line
 
         const recommendedBooks = findSimilarBooks(userBooks, allBooks);
-        displayRecommendedBooks(recommendedBooks);
+        // displayRecommendedBooks(recommendedBooks);
+        displaysearch(recommendedBooks);
+
     } catch (error) {
         console.error('Error fetching book data:', error);
     }
@@ -111,8 +114,56 @@ function displayRecommendedBooks(recommendedBooks) {
     }
 }
 
+//--------display book------------------------------------------------------------
+function displaysearch(books) {
+    const container = document.getElementById('recommended-books');
+    if (!container) {
+        console.error('Results container not found');
+        return;
+    }
+
+    container.innerHTML = ''; // Clear previous results
+
+    if (books.length === 0) {
+        container.innerHTML = `
+            <div class="no-results" style="text-align: center; padding: 20px;">
+                <p style="color: #666; font-size: 1.1em;">No books found matching your search criteria.</p>
+            </div>`;
+        return;
+    }
+
+    books.forEach(book => {
+        const bookCard = document.createElement('div');
+        bookCard.className = 'book-card';
+        bookCard.style.cssText = `
+            border: 1px solid #ccc; padding: 15px; margin: 10px;
+            width: 100px; display: inline-block; text-align: left;
+            border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 12px`;
+
+        bookCard.innerHTML = `
+            <img src="${book.image || 'placeholder.jpg'}" alt="${book.title}" 
+                style="width: 100%; height: auto; object-fit: cover; margin-bottom: 10px; border-radius: 4px;">
+            <h3 style="margin: 10px 0; color: #333;">${book.title}</h3>
+            <p><strong>Author:</strong> ${book.author}</p>
+            <p><strong>Genre:</strong> ${book.genre}</p>
+            <p><strong>Description:</strong> ${book.description}</p>`;
+
+        container.appendChild(bookCard);
+    });
+}
+
 // Toggle user menu for mobile view
 function toggleUserMenu() {
     const userMenu = document.getElementById('user-menu');
     userMenu.classList.toggle('active');
 }
+
+function signOut() {
+    localStorage.removeItem('user'); // Remove user data from localStorage
+}
+document.querySelector(".nav-menu button").addEventListener("click", () => {
+    signOut()
+    window.location.href = "/index.html";
+});
+    

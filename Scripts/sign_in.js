@@ -32,7 +32,7 @@ signInForm.addEventListener('submit', async (event) => {
             // Store user sign-in status in localStorage
             localStorage.setItem('user', JSON.stringify({ email, name: data.name })); 
 
-            window.location.href = "/Book_Vault/index.html"; 
+            window.location.href = "/index.html"; 
         } else {
             alert(data.message);
         }
