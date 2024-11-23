@@ -38,7 +38,7 @@ async function fetchAvailability() {
 // Function to display the fetched books in a table
 function displayBooks(books) {
     const tableBody = document.querySelector('#books-table tbody');
-    tableBody.innerHTML = ''; // Clear previous entries
+    tableBody.innerHTML = ''; 
 
     books.forEach(book => {
         const bookElement = document.createElement('tr');
@@ -119,11 +119,11 @@ function handleSearch(event) {
     displaysearch(filteredBooks); // Display filtered books
 }
 
-// Call fetchBooks on page load to populate the table
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Page loaded. Checking sign-in status...');
-    checkSignInStatus(); // Check if the user is signed in
-    fetchBooks(); // Fetch and display all books
+    checkSignInStatus(); 
+    fetchBooks(); 
 });
 
 // Function to check the sign-in status of the user
@@ -143,13 +143,13 @@ function checkSignInStatus() {
 
         signOutButton.style.display = 'inline-block'; // Show sign-out button
     } else {
-        // User is not signed in, show Sign In button
+      
         signInButton.textContent = 'Sign In';
         signInButton.onclick = () => {
             window.location.href = '/Pages/sign_in.html'; // Redirect to sign-in page
         };
 
-        signOutButton.style.display = 'none'; // Hide sign-out button
+        signOutButton.style.display = 'none'; 
     }
 }
 

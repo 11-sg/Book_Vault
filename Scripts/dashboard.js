@@ -22,13 +22,13 @@ function toggleMenu() {
 const email = JSON.parse(localStorage.getItem('user')).email;
 
 if (email) {
-    // Fetch user data from the server
-    fetch('http://localhost:3000/user_data') // Use the correct server endpoint
+    
+    fetch('http://localhost:3000/user_data')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch user data');
             }
-            return response.json(); // Parse the JSON response
+            return response.json(); 
         })
         .then(data => {
             // Find the user matching the email
@@ -36,7 +36,7 @@ if (email) {
 
             if (matchingUser) {
                 console.log('Matching User Data:', matchingUser);
-                // Use the data (e.g., display it on the dashboard)
+                
                 document.querySelector('#name').innerHTML = '<i>Welcome, ' + matchingUser .name + ' ! <br><br>';
                 document.querySelector('#email').innerHTML = matchingUser.email
                 document.querySelector('#books').innerHTML = matchingUser.book
