@@ -17,7 +17,7 @@ async function fetchBooks() {
 // Function to fetch available books data from available.json file
 async function fetchAvailability() {
     try {
-        const response = await fetch('Book_Vault/node/not_available.json'); // Path to available.json file
+        const response = await fetch('../Book_Vault/node/not_available.json'); // Path to available.json file
         const data = await response.json(); // Get the available books
         availableBooks = data.books.map(book => book.title); // Extract available book titles
 
