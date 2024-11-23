@@ -31,8 +31,8 @@ signInForm.addEventListener('submit', async (event) => {
         if (data.success) {
             // Store user sign-in status in localStorage
             localStorage.setItem('user', JSON.stringify({ email, name: data.name })); // Save user info
-
-            window.location.href = "/Book_Vault/index.html"; // Redirect to homepage after successful login
+                                    //removed Book_Vault
+            window.location.href = "../index.html"; // Redirect to homepage after successful login
         } else {
             alert(data.message); // Show error message
         }
