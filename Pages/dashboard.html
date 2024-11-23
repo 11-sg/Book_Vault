@@ -21,7 +21,7 @@
             </div>
             <div id="nav-menu" class="nav-menu">
                 <ul>
-                    <li><a href="/Book_Vault/index.html">Home</a></li>
+                    <li><a href="/index.html">Home</a></li> <!-- removed /Book_Vault -->
                     <li><a href="about.html">About</a></li>
                     <li><button onclick="window.location.href='/Book_Vault/index.html';">Sign Out</button></li>
                 </ul>
@@ -46,9 +46,16 @@
             </div>
 
             <div class="tab-content" id="your-books" style="display:none;">
-                <h2>Your Books</h2>
+                <h1>Your Books</h1>
                 <!-- <p>Here is a list of the books you've issued.</p> -->
-                <div class="user_info" id="books"></div>
+                 <div class="your-book">
+                    <h2>Current issued</h2>
+                    <div id="curr-books"></div>
+
+                    <h2>History</h2>
+                    <div class="user_info" id="history"></div>
+                 </div>
+                
             </div>
         </div>
     </div>

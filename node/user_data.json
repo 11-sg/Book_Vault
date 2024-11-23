@@ -4,6 +4,159 @@
         "email": "sahil.23bce10074@vitbhopal.ac.in",
         "userid": "23BCE10074",
         "password": "sahil123",
-        "book":["To Kill a Mockingbird, Brave New World"]
+        "book": ["To Kill a Mockingbird", "Brave New World", "1984"],
+        "issued_books": ["The Catcher in the Rye", "The Master and Margarita"]
+    },
+    {
+        "name": "Aryan",
+        "email": "aryan.23bce10075@vitbhopal.ac.in",
+        "userid": "23BCE10075",
+        "password": "aryan123",
+        "book": ["1984", "The Great Gatsby", "The Odyssey"],
+        "issued_books": ["Atomic Habits"]
+    },
+    {
+        "name": "Meera",
+        "email": "meera.23bce10076@vitbhopal.ac.in",
+        "userid": "23BCE10076",
+        "password": "meera123",
+        "book": ["Pride and Prejudice", "Wuthering Heights", "The Great Gatsby"],
+        "issued_books": ["Educated", "Rich Dad Poor Dad"]
+    },
+    {
+        "name": "Aditya",
+        "email": "aditya.23bce10077@vitbhopal.ac.in",
+        "userid": "23BCE10077",
+        "password": "aditya123",
+        "book": ["The Catcher in the Rye", "Animal Farm"],
+        "issued_books": ["The Subtle Art of Not Giving a F*ck", "The Lean Startup"]
+    },
+    {
+        "name": "Nisha",
+        "email": "nisha.23bce10078@vitbhopal.ac.in",
+        "userid": "23BCE10078",
+        "password": "nisha123",
+        "book": ["Jane Eyre", "The Lord of the Rings", "The Catcher in the Rye", "War and Peace"],
+        "issued_books": ["Moby-Dick"]
+    },
+    {
+        "name": "Rohit",
+        "email": "rohit.23bce10079@vitbhopal.ac.in",
+        "userid": "23BCE10079",
+        "password": "rohit123",
+        "book": ["Harry Potter", "The Hobbit", "War and Peace"],
+        "issued_books": ["Sapiens: A Brief History of Humankind"]
+    },
+    {
+        "name": "Anjali",
+        "email": "anjali.23bce10080@vitbhopal.ac.in",
+        "userid": "23BCE10080",
+        "password": "anjali123",
+        "book": ["Little Women", "The Alchemist", "Frankenstein"],
+        "issued_books": ["Atomic Habits", "The Picture of Dorian Gray"]
+    },
+    {
+        "name": "Rahul",
+        "email": "rahul.23bce10081@vitbhopal.ac.in",
+        "userid": "23BCE10081",
+        "password": "rahul123",
+        "book": ["Moby-Dick", "War and Peace", "Pride and Prejudice"],
+        "issued_books": ["The Bell Jar"]
+    },
+    {
+        "name": "Sneha",
+        "email": "sneha.23bce10082@vitbhopal.ac.in",
+        "userid": "23BCE10082",
+        "password": "sneha123",
+        "book": ["The Odyssey", "Crime and Punishment"],
+        "issued_books": ["The Time Machine", "The Road"]
+    },
+    {
+        "name": "Karan",
+        "email": "karan.23bce10083@vitbhopal.ac.in",
+        "userid": "23BCE10083",
+        "password": "karan123",
+        "book": ["Frankenstein", "The Scarlet Letter", "War and Peace", "1984"],
+        "issued_books": ["The Count of Monte Cristo"]
+    },
+    {
+        "name": "Priya",
+        "email": "priya.23bce10084@vitbhopal.ac.in",
+        "userid": "23BCE10084",
+        "password": "priya123",
+        "book": ["Dracula", "The Picture of Dorian Gray"],
+        "issued_books": ["The Catcher in the Rye", "The Lean Startup"]
+    },
+    {
+        "name": "Vivek",
+        "email": "vivek.23bce10085@vitbhopal.ac.in",
+        "userid": "23BCE10085",
+        "password": "vivek123",
+        "book": ["The Divine Comedy", "Don Quixote", "War and Peace"],
+        "issued_books": ["The Jungle Book"]
+    },
+    {
+        "name": "Pooja",
+        "email": "pooja.23bce10086@vitbhopal.ac.in",
+        "userid": "23BCE10086",
+        "password": "pooja123",
+        "book": ["The Count of Monte Cristo", "The Old Man and the Sea"],
+        "issued_books": ["The Subtle Art of Not Giving a F*ck"]
+    },
+    {
+        "name": "Akash",
+        "email": "akash.23bce10087@vitbhopal.ac.in",
+        "userid": "23BCE10087",
+        "password": "akash123",
+        "book": ["A Tale of Two Cities", "Les Misérables"],
+        "issued_books": ["Sapiens: A Brief History of Humankind", "The Odyssey"]
+    },
+    {
+        "name": "Neha",
+        "email": "neha.23bce10088@vitbhopal.ac.in",
+        "userid": "23BCE10088",
+        "password": "neha123",
+        "book": ["The Jungle Book", "The Secret Garden", "1984"],
+        "issued_books": ["The War of the Worlds"]
+    },
+    {
+        "name": "Manish",
+        "email": "manish.23bce10089@vitbhopal.ac.in",
+        "userid": "23BCE10089",
+        "password": "manish123",
+        "book": ["The Time Machine", "The War of the Worlds"],
+        "issued_books": ["Atomic Habits", "Brave New World"]
+    },
+    {
+        "name": "Simran",
+        "email": "simran.23bce10090@vitbhopal.ac.in",
+        "userid": "23BCE10090",
+        "password": "simran123",
+        "book": ["The Call of the Wild", "White Fang"],
+        "issued_books": ["The Catcher in the Rye"]
+    },
+    {
+        "name": "Ritika",
+        "email": "ritika.23bce10091@vitbhopal.ac.in",
+        "userid": "23BCE10091",
+        "password": "ritika123",
+        "book": ["The Bell Jar", "Gone with the Wind", "Moby-Dick"],
+        "issued_books": ["The Lean Startup"]
+    },
+    {
+        "name": "Abhishek",
+        "email": "abhishek.23bce10092@vitbhopal.ac.in",
+        "userid": "23BCE10092",
+        "password": "abhishek123",
+        "book": ["Of Mice and Men", "The Grapes of Wrath"],
+        "issued_books": ["Educated", "War and Peace"]
+    },
+    {
+        "name": "Isha",
+        "email": "isha.23bce10093@vitbhopal.ac.in",
+        "userid": "23BCE10093",
+        "password": "isha123",
+        "book": ["The Road", "Beloved", "The Subtle Art of Not Giving a F*ck"],
+        "issued_books": ["1984"]
     }
 ]

@@ -7,13 +7,13 @@
     <title>BookVault - Search</title>
     <link rel="stylesheet" href="Styles/home.css">
     <link rel="icon" href="Assets/vitlogo.jpg">
-    <base href="/Book_Vault/">
+    <!-- <base href="/Book_Vault/"> -->
 </head>
 
 <body>
     <header>
         <nav class="nav">
-            <img src="vitlogo.jpg" alt="Logo" width="30" height="30" class="vitlogo" />
+            <img src="/Assets/vitlogo.jpg" alt="Logo" width="30" height="30" class="vitlogo" />
             <div class="book">BookVault</div>
             <div class="menu-bar" onclick="toggleMenu()">
                 <div></div>
@@ -22,9 +22,11 @@
             </div>
             <div id="nav-menu" class="nav-menu">
                 <ul>
-                    <li><a href="/Book_Vault/index.html">Home</a></li>
-                    <li><a href="/Book_Vault/Pages/about.html">About</a></li>
-                    <li><a class="signed-in" href="/Book_Vault/Pages/dashboard.html">Dashboard</a></li>
+
+                    <!--removed Book_Vault-->
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/Pages/about.html">About</a></li>
+                    <li><a class="signed-in" href="/Pages/dashboard.html">Dashboard</a></li>
                     <li><button onclick="window.location.href='/Pages/sign_in.html'">Sign In</button></li>
                 </ul>
             </div>
@@ -48,6 +50,16 @@
         </div>
 
         <div id="search-results">
+            
+            <div id="results-container" style="margin-top: 20px;"></div>
+
+            <div id="image"></div>
+            <div id="title"></div>
+            <div id="author"></div>
+            <div id="genre"></div>
+            <div id="description"></div>
+            <div id="availability"></div>
+
             <table id="books-table">
                 <thead>
                     <tr>
@@ -55,6 +67,7 @@
                         <th>Author</th>
                         <th>Genre</th>
                         <th>Description</th>
+                        <th>Availability</th>
 
                     </tr>
                 </thead>
@@ -64,7 +77,7 @@
             </table>
         </div>
     </div>
-    <script src="Scripts/home.js"></script>
+    <script src="/Scripts/home.js"></script>
 </body>
 
 </html>
