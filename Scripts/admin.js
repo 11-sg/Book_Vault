@@ -1,6 +1,7 @@
 let users = []; // Store user data globally
 let availableBooks = []; // Store available books globally
 let notAvailableBooks = []; // Store unavailable books globally
+let userChoices = null;
 
 // Fetch user data and available/unavailable books from the server
 async function fetchData() {
@@ -42,15 +43,104 @@ function populateUserDropdown() {
         return;
     }
 
-    userSelect.innerHTML = ''; // Clear previous options
-    users.forEach(user => {
+    // Clear previous options and Choices.js instance if already initialized
+    if (userChoices) {
+        userChoices.destroy();
+    }
+    userSelect.innerHTML = '';
+
+    // Store the original users list for resetting
+    const originalUsers = [...users];
+
+    // Add options for each user with both ID and name
+    originalUsers.forEach(user => {
         const option = document.createElement('option');
         option.value = user.userid;
-        option.textContent = user.name;
+        option.textContent = `${user.name} (ID: ${user.userid})`;
+        option.setAttribute('data-name', user.name.toLowerCase());
+        option.setAttribute('data-userid', user.userid.toLowerCase());
         userSelect.appendChild(option);
     });
-}
 
+    // Initialize Choices.js with modified configuration
+    userChoices = new Choices(userSelect, {
+        searchEnabled: true,
+        itemSelectText: '',
+        placeholderValue: 'Search by name or ID',
+        searchPlaceholderValue: 'Type name or ID to search',
+        removeItemButton: true,
+        searchResultLimit: 10,
+        position: 'bottom',
+        resetScrollPosition: false,
+        shouldSort: false,
+        searchFields: ['label', 'value'], // Use built-in search fields
+        choices: originalUsers.map(user => ({
+            value: user.userid,
+            label: `${user.name} (ID: ${user.userid})`
+        }))
+    });
+
+    // Handle search input changes
+    userChoices.input.element.addEventListener('input', function (event) {
+        const searchTerm = event.target.value.toLowerCase().trim();
+
+        // Clear existing choices
+        userChoices.clearStore();
+
+        // Filter and set new choices
+        const filteredChoices = originalUsers.filter(user =>
+            user.name.toLowerCase().includes(searchTerm) ||
+            user.userid.toLowerCase().includes(searchTerm)
+        );
+
+        // Set the filtered choices
+        userChoices.setChoices(
+            filteredChoices.map(user => ({
+                value: user.userid,
+                label: `${user.name} (ID: ${user.userid})`,
+                selected: false
+            })),
+            'value',
+            'label',
+            true // Should be true to replace existing choices
+        );
+    });
+
+    // Handle selection
+    userChoices.passedElement.element.addEventListener('choice', function (event) {
+        // Don't clear the search immediately to allow for the selection to complete
+        setTimeout(() => {
+            // Reset the choices to the original list
+            userChoices.clearStore();
+            userChoices.setChoices(
+                originalUsers.map(user => ({
+                    value: user.userid,
+                    label: `${user.name} (ID: ${user.userid})`
+                })),
+                'value',
+                'label',
+                true
+            );
+            // Clear the search input
+            userChoices.input.element.value = '';
+        }, 100);
+    });
+
+    // Handle clearing the selection
+    userChoices.passedElement.element.addEventListener('removeItem', function () {
+        // Reset choices to original state
+        userChoices.clearStore();
+        userChoices.setChoices(
+            originalUsers.map(user => ({
+                value: user.userid,
+                label: `${user.name} (ID: ${user.userid})`
+            })),
+            'value',
+            'label',
+            true
+        );
+    });
+}
 // Declare a global variable for the book dropdown element to initialize Choices.js
 let bookChoices = null;
 
@@ -68,12 +158,7 @@ function populateBooksDropdown() {
     }
     bookSelectElement.innerHTML = '';
 
-    // Filter out unavailable books
-    const availableBooksFiltered = availableBooks.filter(
-        book => !notAvailableBooks.some(notAvailableBook => notAvailableBook.title === book.title)
-    );
-
-    availableBooksFiltered.forEach(book => {
+    availableBooks.forEach(book => {
         const option = document.createElement('option');
         option.value = book.title;
         option.textContent = book.title;
@@ -154,6 +239,12 @@ function displayUserInfo() {
         actionsDiv.style.display = 'none';
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const userSelect = document.getElementById('user-select');
+    if (userSelect) {
+        userSelect.addEventListener('change', displayUserInfo);
+    }
+});
 
 // Handle form submission for issuing or returning books
 document.getElementById('admin-form')?.addEventListener('submit', async event => {
@@ -181,7 +272,6 @@ document.getElementById('admin-form')?.addEventListener('submit', async event =>
             await returnBook(user, bookTitle);
         }
 
-        displayStatusMessage(`Successfully ${action === 'issue' ? 'issued' : 'returned'} "${bookTitle}" to ${user.name}.`);
     } catch (error) {
         console.error('Error handling book issue/return:', error);
         alert('An error occurred while processing the request.');
@@ -204,6 +294,8 @@ async function issueBook(user, bookTitle) {
     user.issued_books.push(bookTitle);  // Add the book to the user's issued_books
     notAvailableBooks.push({ title: bookTitle });  // Add the book to the notAvailableBooks array
 
+    displayStatusMessage(`The book "${bookTitle}" was successfully issued to "${user.name}." `);
+
     // After updating, send the updated data to the server
     await saveDataToServer();
     populateBooksDropdown();  // Refresh dropdown after issuing
@@ -223,6 +315,8 @@ async function returnBook(user, bookTitle) {
     if (notAvailableIndex !== -1) {
         notAvailableBooks.splice(notAvailableIndex, 1);  // Remove the book from notAvailableBooks
     }
+
+    displayStatusMessage(`The book "${bookTitle}" was successfully returned by "${user.name}." `);
 
     // After updating, send the updated data to the server
     await saveDataToServer();
@@ -254,7 +348,7 @@ async function saveDataToServer() {
 
 // Display status messages to the user
 function displayStatusMessage(message) {
-    const statusDiv = document.getElementById('status');
+    const statusDiv = document.getElementById('status-message');
     if (!statusDiv) return;
 
     statusDiv.textContent = message;
