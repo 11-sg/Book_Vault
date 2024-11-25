@@ -17,7 +17,7 @@ async function fetchBooks() {
 // Function to fetch available books data from available.json file
 async function fetchAvailability() {
     try {
-        const response = await fetch('/node/not_available.json'); // Path to available.json file
+        const response = await fetch('http://localhost:3000/not_available'); // Path to available.json file
         const data = await response.json(); // Get the available books
         availableBooks = data.books.map(book => book.title); // Extract available book titles
 
@@ -55,12 +55,12 @@ function displaysearch(books) {
         bookCard.className = 'book-card';
         bookCard.style.cssText = `
             border: 1px solid #ccc; padding: 15px; margin: 10px;
-            width: 300px; display: inline-block; text-align: left;
+            width: 300px; height: 350px; display: inline-block; text-align: left; font-size: 12px;
             border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);`;
 
         bookCard.innerHTML = `
             <img src="${book.image || 'placeholder.jpg'}" alt="${book.title}" 
-                style="width: 100%; height: auto; object-fit: cover; margin-bottom: 10px; border-radius: 4px;">
+                style="width: 100%; height: 175px; object-fit: contain; margin-bottom: 10px; border-radius: 4px;">
             <h3 style="margin: 10px 0; color: #333;">${book.title}</h3>
             <p><strong>Author:</strong> ${book.author}</p>
             <p><strong>Genre:</strong> ${book.genre}</p>

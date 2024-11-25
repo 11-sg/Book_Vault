@@ -1,103 +1,37 @@
 {
     "books": [
-        {
-            "title": "The Catcher in the Rye"
-        },
-        {
-            "title": "The Lean Startup"
-        },
-        {
-            "title": "Sapiens: A Brief History of Humankind"
-        },
-        {
-            "title": "The Master and Margarita"
-        },
-        {
-            "title": "Cracking the Coding Interview"
-        },
-        {
-            "title": "Atomic Habits"
-        },
-        {
-            "title": "The Power of Habit"
-        },
-        {
-            "title": "Thinking, Fast and Slow"
-        },
-        {
-            "title": "Introduction to Algorithms"
-        },
-        {
-            "title": "Man’s Search for Meaning"
-        },
-        {
-            "title": "Rich Dad Poor Dad"
-        },
-        {
-            "title": "The Art of Computer Programming"
-        },
-        {
-            "title": "The Light We Cannot See"
-        },
-        {
-            "title": "The Bhagavad Gita"
-        },
-        {
-            "title": "Outliers: The Story of Success"
-        },
-        {
-            "title": "The Subtle Art of Not Giving a F*ck"
-        },
-        {
-            "title": "Zero to One"
-        },
-        {
-            "title": "The Intelligent Investor"
-        },
-        {
-            "title": "The Psychology of Money"
-        },
-        {
-            "title": "The War of Art"
-        },
-        {
-            "title": "The Bible"
-        },
-        {
-            "title": "The Art of War"
-        },
-        {
-            "title": "Astrophysics for People in a Hurry"
-        },
-        {
-            "title": "The Feynman Lectures on Physics"
-        },
-        {
-            "title": "The Millionaire Next Door"
-        },
-        {
-            "title": "The 7 Habits of Highly Effective People"
-        },
-        {
-            "title": "The Night Circus"
-        },
-        {
-            "title": "The Psychology of Influence"
-        },
-        {
-            "title": "Start with Why"
-        },
-        {
-            "title": "The Road to Character"
-        },
-        {
-            "title": "The Elements of Statistical Learning"
-        },
-        {
-            "title": "Linear Algebra and Its Applications"
-        },
-        {
-            "title": "Fundamentals of Physics"
-        }
+        { "title": "The Catcher in the Rye" },
+        { "title": "The Master and Margarita" },
+        { "title": "Atomic Habits" },
+        { "title": "Educated" },
+        { "title": "Rich Dad Poor Dad" },
+        { "title": "The Subtle Art of Not Giving a F*ck" },
+        { "title": "The Lean Startup" },
+        { "title": "Moby-Dick" },
+        { "title": "Sapiens: A Brief History of Humankind" },
+        { "title": "The Time Machine" },
+        { "title": "The Road" },
+        { "title": "The Count of Monte Cristo" },
+        { "title": "The Bell Jar" },
+        { "title": "The Picture of Dorian Gray" },
+        { "title": "The Jungle Book" },
+        { "title": "The War of the Worlds" },
+        { "title": "Brave New World" },
+        { "title": "The Great Gatsby" },
+        { "title": "The Odyssey" },
+        { "title": "Crime and Punishment" },
+        { "title": "Frankenstein" },
+        { "title": "The Scarlet Letter" },
+        { "title": "Dracula" },
+        { "title": "The Divine Comedy" },
+        { "title": "Don Quixote" },
+        { "title": "The Secret Garden" },
+        { "title": "Les Misérables" },
+        { "title": "Gone with the Wind" },
+        { "title": "White Fang" },
+        { "title": "Of Mice and Men" },
+        { "title": "The Grapes of Wrath" },
+        { "title": "The Call of the Wild" }
     ]
+    
 }
