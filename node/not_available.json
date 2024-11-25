@@ -1,37 +1,100 @@
 {
-    "books": [
-        { "title": "The Catcher in the Rye" },
-        { "title": "The Master and Margarita" },
-        { "title": "Atomic Habits" },
-        { "title": "Educated" },
-        { "title": "Rich Dad Poor Dad" },
-        { "title": "The Subtle Art of Not Giving a F*ck" },
-        { "title": "The Lean Startup" },
-        { "title": "Moby-Dick" },
-        { "title": "Sapiens: A Brief History of Humankind" },
-        { "title": "The Time Machine" },
-        { "title": "The Road" },
-        { "title": "The Count of Monte Cristo" },
-        { "title": "The Bell Jar" },
-        { "title": "The Picture of Dorian Gray" },
-        { "title": "The Jungle Book" },
-        { "title": "The War of the Worlds" },
-        { "title": "Brave New World" },
-        { "title": "The Great Gatsby" },
-        { "title": "The Odyssey" },
-        { "title": "Crime and Punishment" },
-        { "title": "Frankenstein" },
-        { "title": "The Scarlet Letter" },
-        { "title": "Dracula" },
-        { "title": "The Divine Comedy" },
-        { "title": "Don Quixote" },
-        { "title": "The Secret Garden" },
-        { "title": "Les Misérables" },
-        { "title": "Gone with the Wind" },
-        { "title": "White Fang" },
-        { "title": "Of Mice and Men" },
-        { "title": "The Grapes of Wrath" },
-        { "title": "The Call of the Wild" }
-    ]
-    
+  "books": [
+    {
+      "title": "The Catcher in the Rye"
+    },
+    {
+      "title": "The Master and Margarita"
+    },
+    {
+      "title": "Atomic Habits"
+    },
+    {
+      "title": "Educated"
+    },
+    {
+      "title": "Rich Dad Poor Dad"
+    },
+    {
+      "title": "The Subtle Art of Not Giving a F*ck"
+    },
+    {
+      "title": "The Lean Startup"
+    },
+    {
+      "title": "Moby-Dick"
+    },
+    {
+      "title": "Sapiens: A Brief History of Humankind"
+    },
+    {
+      "title": "The Time Machine"
+    },
+    {
+      "title": "The Road"
+    },
+    {
+      "title": "The Count of Monte Cristo"
+    },
+    {
+      "title": "The Bell Jar"
+    },
+    {
+      "title": "The Picture of Dorian Gray"
+    },
+    {
+      "title": "The Jungle Book"
+    },
+    {
+      "title": "The War of the Worlds"
+    },
+    {
+      "title": "Brave New World"
+    },
+    {
+      "title": "The Great Gatsby"
+    },
+    {
+      "title": "The Odyssey"
+    },
+    {
+      "title": "Crime and Punishment"
+    },
+    {
+      "title": "Frankenstein"
+    },
+    {
+      "title": "The Scarlet Letter"
+    },
+    {
+      "title": "Dracula"
+    },
+    {
+      "title": "The Divine Comedy"
+    },
+    {
+      "title": "Don Quixote"
+    },
+    {
+      "title": "The Secret Garden"
+    },
+    {
+      "title": "Les Misérables"
+    },
+    {
+      "title": "Gone with the Wind"
+    },
+    {
+      "title": "White Fang"
+    },
+    {
+      "title": "Of Mice and Men"
+    },
+    {
+      "title": "The Grapes of Wrath"
+    },
+    {
+      "title": "The Call of the Wild"
+    }
+  ]
 }

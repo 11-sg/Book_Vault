@@ -50,12 +50,12 @@ function displaysearch(books) {
         return;
     }
 
-    books.forEach(book => {
+    books.forEach(book => { 
         const bookCard = document.createElement('div');
         bookCard.className = 'book-card';
         bookCard.style.cssText = `
             border: 1px solid #ccc; padding: 15px; margin: 10px;
-            width: 300px; height: 350px; display: inline-block; text-align: left; font-size: 12px;
+            width: 300px; height: auto; display: inline-block; text-align: left; font-size: 12px;
             border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);`;
 
         bookCard.innerHTML = `
@@ -72,6 +72,7 @@ function displaysearch(books) {
         resultsContainer.appendChild(bookCard);
     });
 }
+
 
 // Function to handle the search logic
 function handleSearch(event) {
