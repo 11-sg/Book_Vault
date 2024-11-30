@@ -161,9 +161,9 @@ function toggleUserMenu() {
 
 function signOut() {
     localStorage.removeItem('user'); // Remove user data from localStorage
+    window.location.href = "../index.html";
 }
 document.querySelector(".nav-menu button").addEventListener("click", () => {
     signOut()
-    window.location.href = "/index.html";
 });
     
