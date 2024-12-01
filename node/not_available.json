@@ -1,9 +1,6 @@
 {
   "books": [
     {
-      "title": "The Catcher in the Rye"
-    },
-    {
       "title": "The Master and Margarita"
     },
     {
@@ -95,6 +92,15 @@
     },
     {
       "title": "The Call of the Wild"
+    },
+    {
+      "title": "1984"
+    },
+    {
+      "title": "The Catcher in the Rye"
+    },
+    {
+      "title": "Dune"
     }
   ]
 }
