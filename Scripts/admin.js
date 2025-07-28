@@ -35,6 +35,33 @@ async function fetchData() {
     }
 }
 
+//fetch current date and time
+function getFormattedDateTime() {
+    const now = new Date();
+  
+    // Format date as dd/mm/yyyy
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    const formattedDate = `${day}/${month}/${year}`;
+  
+    // Format time as hh:mm
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const formattedTime = `${hours}:${minutes}`;
+  
+    return {
+      date: formattedDate,
+      time: formattedTime,
+    };
+  }
+  
+  // Usage
+  const { date, time } = getFormattedDateTime();
+  console.log(`Date: ${date}`);
+  console.log(`Time: ${time}`);
+  
+
 // Populate the user dropdown with data
 function populateUserDropdown() {
     const userSelect = document.getElementById('user-select');
@@ -43,104 +70,32 @@ function populateUserDropdown() {
         return;
     }
 
-    // Clear previous options and Choices.js instance if already initialized
     if (userChoices) {
-        userChoices.destroy();
+        userChoices.destroy(); // Remove previous instance
     }
+
     userSelect.innerHTML = '';
 
-    // Store the original users list for resetting
-    const originalUsers = [...users];
-
-    // Add options for each user with both ID and name
-    originalUsers.forEach(user => {
+    users.forEach(user => {
         const option = document.createElement('option');
         option.value = user.userid;
         option.textContent = `${user.name} (ID: ${user.userid})`;
-        option.setAttribute('data-name', user.name.toLowerCase());
-        option.setAttribute('data-userid', user.userid.toLowerCase());
         userSelect.appendChild(option);
     });
 
-    // Initialize Choices.js with modified configuration
+    // Initialize Choices.js again
     userChoices = new Choices(userSelect, {
         searchEnabled: true,
         itemSelectText: '',
-        placeholderValue: 'Search by name or ID',
-        searchPlaceholderValue: 'Type name or ID to search',
         removeItemButton: true,
-        searchResultLimit: 10,
-        position: 'bottom',
-        resetScrollPosition: false,
-        shouldSort: false,
-        searchFields: ['label', 'value'], // Use built-in search fields
-        choices: originalUsers.map(user => ({
-            value: user.userid,
-            label: `${user.name} (ID: ${user.userid})`
-        }))
     });
 
-    // Handle search input changes
-    userChoices.input.element.addEventListener('input', function (event) {
-        const searchTerm = event.target.value.toLowerCase().trim();
-
-        // Clear existing choices
-        userChoices.clearStore();
-
-        // Filter and set new choices
-        const filteredChoices = originalUsers.filter(user =>
-            user.name.toLowerCase().includes(searchTerm) ||
-            user.userid.toLowerCase().includes(searchTerm)
-        );
-
-        // Set the filtered choices
-        userChoices.setChoices(
-            filteredChoices.map(user => ({
-                value: user.userid,
-                label: `${user.name} (ID: ${user.userid})`,
-                selected: false
-            })),
-            'value',
-            'label',
-            true // Should be true to replace existing choices
-        );
-    });
-
-    // Handle selection
-    userChoices.passedElement.element.addEventListener('choice', function (event) {
-        // Don't clear the search immediately to allow for the selection to complete
-        setTimeout(() => {
-            // Reset the choices to the original list
-            userChoices.clearStore();
-            userChoices.setChoices(
-                originalUsers.map(user => ({
-                    value: user.userid,
-                    label: `${user.name} (ID: ${user.userid})`
-                })),
-                'value',
-                'label',
-                true
-            );
-            // Clear the search input
-            userChoices.input.element.value = '';
-        }, 100);
-    });
-
-    // Handle clearing the selection
-    userChoices.passedElement.element.addEventListener('removeItem', function () {
-        // Reset choices to original state
-        userChoices.clearStore();
-        userChoices.setChoices(
-            originalUsers.map(user => ({
-                value: user.userid,
-                label: `${user.name} (ID: ${user.userid})`
-            })),
-            'value',
-            'label',
-            true
-        );
+    // **Ensure selection updates correctly**
+    userSelect.addEventListener('change', () => {
+        console.log("Updated Selected User:", userSelect.value);
     });
 }
+
 // Declare a global variable for the book dropdown element to initialize Choices.js
 let bookChoices = null;
 
@@ -198,7 +153,19 @@ function populateNotAvailableBooksTable() {
                 <td>${bookDetails.author}</td>
                 <td>${bookDetails.genre}</td>
                 <td>${issuerName}</td>
+                <td>${`${notAvailableBook.date} ${notAvailableBook.time}`}</td>
+                <td></td >
             `;
+
+            // Create the button dynamically
+            const button = document.createElement("button");
+            button.textContent = "Send Email";
+            button.onclick = () => sendEmail(user.email , user.name );
+
+            // Append the button to the last cell of the row
+            const lastCell = row.querySelector("td:last-child");
+            lastCell.appendChild(button);
+
             booksTableBody.appendChild(row);
         }
     });
@@ -211,6 +178,7 @@ function displayUserInfo() {
     const actionsDiv = document.getElementById('actions');
     const userNameSpan = document.getElementById('user-name');
     const userEmailSpan = document.getElementById('user-email');
+    const userBooksHistory = document.getElementById('user-books-history');
     const userBooksList = document.getElementById('user-books-list');
 
     if (!userInfoDiv || !actionsDiv || !userNameSpan || !userEmailSpan || !userBooksList) {
@@ -223,6 +191,13 @@ function displayUserInfo() {
         if (user) {
             userNameSpan.textContent = user.name;
             userEmailSpan.textContent = user.email;
+            userBooksHistory.innerHTML = '';
+            user.book.forEach(bookTitle => {
+                const li = document.createElement('li');
+                li.textContent = bookTitle;
+                userBooksHistory.appendChild(li);
+            });
+
             userBooksList.innerHTML = ''; // Clear previous books
 
             user.issued_books.forEach(bookTitle => {
@@ -241,6 +216,7 @@ function displayUserInfo() {
 }
 document.addEventListener('DOMContentLoaded', () => {
     const userSelect = document.getElementById('user-select');
+    console.log(userSelect)
     if (userSelect) {
         userSelect.addEventListener('change', displayUserInfo);
     }
@@ -250,7 +226,15 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('admin-form')?.addEventListener('submit', async event => {
     event.preventDefault();
 
-    const userId = document.getElementById('user-select')?.value;
+    const userSelect = document.getElementById('user-select');
+    console.log("Dropdown Element:", userSelect);
+    console.log("Selected User ID (raw):", userSelect?.value);
+    console.log("Choices.js Value:", userChoices?.getValue(true)); // If using Choices.js
+
+    const userId = userChoices?.getValue(true);
+
+    console.log("Final User ID:", userId);
+
     const action = document.getElementById('book-action')?.value;
     const bookTitle = document.getElementById('book-input')?.value.trim();
 
@@ -259,7 +243,9 @@ document.getElementById('admin-form')?.addEventListener('submit', async event =>
         return;
     }
 
-    const user = users.find(u => u.userid === userId);
+    const user = users.find(u => String(u.userid) === String(userId));
+    console.log("Matched User Object:", user);
+
     if (!user) {
         alert('User not found.');
         return;
@@ -271,12 +257,12 @@ document.getElementById('admin-form')?.addEventListener('submit', async event =>
         } else if (action === 'return') {
             await returnBook(user, bookTitle);
         }
-
     } catch (error) {
         console.error('Error handling book issue/return:', error);
         alert('An error occurred while processing the request.');
     }
 });
+
 
 // Issue a book to a user
 // Issue a book to a user
@@ -292,7 +278,10 @@ async function issueBook(user, bookTitle) {
     }
 
     user.issued_books.push(bookTitle);  // Add the book to the user's issued_books
-    notAvailableBooks.push({ title: bookTitle });  // Add the book to the notAvailableBooks array
+    notAvailableBooks.push({ title: bookTitle,
+        date: date,
+        time: time
+     });  // Add the book to the notAvailableBooks array
 
     displayStatusMessage(`The book "${bookTitle}" was successfully issued to "${user.name}." `);
 
@@ -311,6 +300,7 @@ async function returnBook(user, bookTitle) {
     }
 
     user.issued_books.splice(index, 1);  // Remove the book from the user's issued_books
+    user.book.push(bookTitle);
     const notAvailableIndex = notAvailableBooks.findIndex(book => book.title === bookTitle);
     if (notAvailableIndex !== -1) {
         notAvailableBooks.splice(notAvailableIndex, 1);  // Remove the book from notAvailableBooks
