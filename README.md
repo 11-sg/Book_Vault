@@ -47,22 +47,26 @@ BookVault is a modern web application designed to simplify and enhance library m
    npm install express
    cd node
    node app.js
+https://11-sg.github.io/Book_Vault/
    
 
 ## Images
 
 ### Home page and Chat-bot
-![Screenshot 2024-12-06 131236](https://github.com/user-attachments/assets/18363432-ddaf-41a8-924e-b5623c6790c5)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9a532b84-d90e-4988-bcb0-c2142b2c3cd2" />
 ![Screenshot 2024-12-06 131747](https://github.com/user-attachments/assets/556b950e-e3c1-4193-939f-84b524c3f6e2)
 
 ### Dashboard
-![Screenshot 2024-12-06 131403](https://github.com/user-attachments/assets/c5cef20d-e7c7-4f4e-8b32-3fc06bdda838)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f0846069-2789-474b-bca4-68b0780b6548" />
+
 
 ### About
-![image](https://github.com/user-attachments/assets/b8d912c4-a1ba-4ef8-bf6f-40972356d3cf)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7c17e320-6855-49c0-a399-6f43ba9abc5d" />
+
 
 ### Admin Portal
-<img width="1919" height="463" alt="image" src="https://github.com/user-attachments/assets/2670448e-ed21-43ea-b087-e94a5148e632" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a7236fc1-7982-430c-8f4a-fa1f692d8e2e" />
+
 
 
 
