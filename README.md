@@ -1,39 +1,53 @@
-# BookVault
+# 📚 BookVault - A Web Application for Library Management
 
-  
+BookVault is a modern web application designed to simplify and enhance library management for both users and administrators. It provides a secure, interactive, and user-friendly interface for managing book inventories, issuing and returning books, tracking borrowing history, and integrating AI-powered support.
 
-A Web Application for Library Management  
+---
 
-  
+## 🚀 Features
 
-## Features  
+### 🔐 User Authentication
+- Secure Sign-Up and Sign-In functionality.
+- User data is securely stored and managed in `user.json`.
 
-1. **User Dashboard**: Displays borrowed books and personalized recommendations.  
+### 📋 User Dashboard
+- Displays borrowed books, current status, and personalized book recommendations.
+- User preferences and history are stored in `user_data.json`.
 
-2. **User Authentication**: Secure sign-in/sign-up processes with user data stored in `user.json`.  
+### 🔍 Search Interface
+- Real-time, dynamic search results as users type.
+- Search based on book title, author, or genre.
 
-3. **Search Interface**: Provides dynamic, real-time search results based on user input.  
+### 📖 Book Availability
+- Displays live availability status of books.
 
-4. **Personalized Dashboard**: Customized using user preferences and data stored in `user_data.json`.  
+### 🤖 AI Chatbot (Gemini)
+- Integrated Gemini chatbot on the homepage.
+- 
+### 👩‍💼 Admin Portal (For Librarians)
+- View detailed user information including:
+  - Registration numbers
+  - Issued books
+  - Borrowing history
+- Issue and return books directly from the portal.
 
-5. **Recommended Books**: A recommendation system that suggests books based on borrowing history, considering genres and authors previously preferred.  
+### 🌐 E-Library Integration
+- Supports connection with external e-libraries.
+- Users can issue e-books through partnered digital libraries.
 
-6. **Book Availability**: Indicates whether a book is currently available in the library.  
+---
 
-7. **Admin Portal** specifically for librarians, enabling:  
+## 🛠️ Installation & Setup
 
-    - View user details, including registration numbers, issued books, and borrowing history.  
-
-    - Facilitating the issuing and return of books for users
-
-8. **AI Chatbot**: Add an AI chatbot using Gemini on the homepage for users to ask book-related queries.
-
-  
-
-## Objective in Focus  
-
-1. Linking **Admin portal** with the rest of the website website.
-2. Connection website with other E-library for issuing of E-books.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/11-sg/Book_Vault.git
+   cd Book_Vault
+   npm install
+   npm install express
+   cd node
+   node app.js
+   
 
 ## Images
 
@@ -48,8 +62,7 @@ A Web Application for Library Management  
 ![image](https://github.com/user-attachments/assets/b8d912c4-a1ba-4ef8-bf6f-40972356d3cf)
 
 ### Admin Portal
-![Screenshot 2024-12-06 132159](https://github.com/user-attachments/assets/cf5bde4b-1702-4cef-af1f-cd74f789cf21)
-![image](https://github.com/user-attachments/assets/c145e7ff-a98e-4120-a334-9c12e998859e)
+<img width="1919" height="463" alt="image" src="https://github.com/user-attachments/assets/2670448e-ed21-43ea-b087-e94a5148e632" />
 
 
 
