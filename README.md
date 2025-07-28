@@ -39,7 +39,7 @@ BookVault is a modern web application designed to simplify and enhance library m
 
 ## 🛠️ Installation & Setup
 
-1. **Clone the repository**
+1. 
    ```bash
    git clone https://github.com/11-sg/Book_Vault.git
    cd Book_Vault
@@ -54,7 +54,8 @@ https://11-sg.github.io/Book_Vault/
 
 ### Home page and Chat-bot
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9a532b84-d90e-4988-bcb0-c2142b2c3cd2" />
-![Screenshot 2024-12-06 131747](https://github.com/user-attachments/assets/556b950e-e3c1-4193-939f-84b524c3f6e2)
+<img width="1016" height="1020" alt="image" src="https://github.com/user-attachments/assets/318ab23d-349b-46f4-aa3e-a104ea28f34e" />
+
 
 ### Dashboard
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f0846069-2789-474b-bca4-68b0780b6548" />
