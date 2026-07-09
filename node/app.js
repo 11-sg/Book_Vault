@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 // Load book data from data.json
-const dataPath = path.join(__dirname, 'data.json');
+const dataPath = path.join(__dirname, 'Data.json');
 const usersDataPath = path.join(__dirname, 'user_data.json');
 const not_availablePath = path.join(__dirname, 'not_available.json');
 

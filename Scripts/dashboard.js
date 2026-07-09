@@ -26,7 +26,7 @@ function toggleMenu() {
 const userData = JSON.parse(localStorage.getItem('user'));
 
 if (userData && userData.email) {
-    fetch('http://localhost:3000/user_data') // Use the correct server endpoint
+    fetch('/user_data') // Use the correct server endpoint
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch user data');
@@ -79,7 +79,8 @@ if (userData && userData.email) {
 // Function to fetch book data and find recommendations
 async function fetchRecommendedBooks(userBooks) {
     try {
-        const response = await fetch('../node/data.json'); // Adjust path as necessary
+        // const response = await fetch('../node/data.json'); // Adjust path as necessary
+        const response = await fetch('/api/books');
         if (!response.ok) {
             throw new Error('Failed to fetch book data');
         }

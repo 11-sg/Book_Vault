@@ -7,19 +7,19 @@ let userChoices = null;
 async function fetchData() {
     try {
         // Fetch user data
-        const userResponse = await fetch('http://localhost:3000/user_data');
+        const userResponse = await fetch('/user_data');
         if (!userResponse.ok) throw new Error('Failed to load user data');
         users = await userResponse.json();
         console.log("Users data:", users);
 
         // Fetch available books
-        const availableResponse = await fetch('http://localhost:3000/api/books');
+        const availableResponse = await fetch('/api/books');
         if (!availableResponse.ok) throw new Error('Failed to load available books');
         availableBooks = await availableResponse.json(); // data.json is an array of books
         console.log("Available books:", availableBooks);
 
         // Fetch unavailable books
-        const notAvailableResponse = await fetch('http://localhost:3000/not_available');
+        const notAvailableResponse = await fetch('/not_available');
         if (!notAvailableResponse.ok) throw new Error('Failed to load not available books');
         const notAvailableData = await notAvailableResponse.json();
         notAvailableBooks = notAvailableData.books; // Each book in notAvailableBooks has a title
@@ -317,7 +317,7 @@ async function returnBook(user, bookTitle) {
 // Send the updated data to the server
 async function saveDataToServer() {
     try {
-        const response = await fetch('http://localhost:3000/update-data', {
+        const response = await fetch('/update-data', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

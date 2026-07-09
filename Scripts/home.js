@@ -4,7 +4,8 @@ let availableBooks = []; // Store available books titles globally
 // Function to fetch all books from the server
 async function fetchBooks() {
     try {
-        const response = await fetch('http://localhost:3000/api/books');
+        // const response = await fetch('http://localhost:3000/api/books');
+         const response = await fetch('/api/books');
         allBooks = await response.json(); // Store the fetched books
         await fetchAvailability(); // Fetch availability and merge with books
         displaysearch(allBooks); // Display all books initially
@@ -17,7 +18,7 @@ async function fetchBooks() {
 // Function to fetch available books data from available.json file
 async function fetchAvailability() {
     try {
-        const response = await fetch('http://localhost:3000/not_available'); // Path to available.json file
+        const response = await fetch('/not_available'); // Path to available.json file
         const data = await response.json(); // Get the available books
         availableBooks = data.books.map(book => book.title); // Extract available book titles
 
