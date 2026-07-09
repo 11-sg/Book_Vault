@@ -3,7 +3,8 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const PORT = 3000;
+// const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -111,9 +112,17 @@ app.post('/update-data', (req, res) => {
     }
 });
 
-app.use(express.static(path.join(__dirname, 'node')));
+// app.use(express.static(path.join(__dirname, 'node')));
+app.use(express.static(path.join(__dirname, '..')));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
 
 // Start the server
+// app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+// });
+
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
