@@ -9,7 +9,7 @@ let userMessage = null;
 let isResponseGenerating = false;
 
 // API configuration
-const API_KEY = "AIzaSyDBhDz2rKxqpdsv-IsjV6KFyvK9ZVPGPsg"; // Your API key here
+const API_KEY = "AQ.Ab8RN6KHTwkIYlKwMuw10IFgZ9iFeDA6x890aQUfiE5-OgookQ"; // Your API key here
 const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=${API_KEY}`;
 
 const inputInitHeight = chatInput.scrollHeight;
